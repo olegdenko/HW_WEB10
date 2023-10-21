@@ -23,4 +23,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("app_hw_web10.urls")),
-] + static(settings.MEDIA_URL, document_rut=settings.MEDIA_ROOT)
+    path("users/", include("users.urls"))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

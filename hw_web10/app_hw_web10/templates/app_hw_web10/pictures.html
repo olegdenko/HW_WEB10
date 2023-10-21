@@ -1,1 +1,22 @@
-{% extends "app_hw_web10/base.html" %} {% block content %} {% endblock %}
+{% extends "app_hw_web10/base.html" %}
+
+{% block content %}
+<h1>Your pictures</h1>
+<div class="row">
+    {% for pic in pictures %}
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{media}}{{pic.path}}" class="card-img-top" alt="pic">
+            <div class="card-body">
+                <h5 class="card-title">{{pic.description}}</h5>
+                <p class="card-text">{{pic.description}}</p>
+                <a href="{% url 'app_hw_web10:edit' pic.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'app_hw_web10:remove' pic.id %}" class="btn btn-primary">Delete</a>
+            </div>
+        </div>    
+    </div>
+
+    {% endfor %}
+</div>
+  
+ {% endblock %}

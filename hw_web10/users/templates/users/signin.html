@@ -1,0 +1,38 @@
+{% extends "app_hw_web10/base.html" %} {% block content %}
+<h1>Sign In</h1>
+{% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags%} class="alert alert-{{message.tags}}" {% endif %} role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% if form.errors %}
+
+    <div class="alert alert-danger" role="alert">
+        {{form.non_field_error}}
+    </div>
+
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        {{form.username}}
+      </div>
+      <span>{{form.errors.username}}</span>
+  </div>
+  <div class="form-row">
+    <div class="mb-3">
+        <label class="form-label">Password 1</label>
+        {{form.password1}}
+      </div>
+      <span>{{form.errors.password1}}</span>
+  </div>
+  <button type="submit" class="btn btn-primary">SignIn</button>
+</form>
+
+{% endblock %}
